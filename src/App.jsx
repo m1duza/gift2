@@ -173,7 +173,7 @@ function App() {
         className='frame_place'
         ref={staticRef}
        
-      ></div>
+      >&lt;3</div>
         {/* Попап */}
         {isPopupVisible && (
         <div className='footer_pop_up_main'  >

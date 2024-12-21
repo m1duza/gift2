@@ -57,7 +57,7 @@
     height: 65px;
     border: #ffd60a 3px solid;
     border-radius: 15px;
-    margin-left: 20px;
+    margin-left: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,10 +86,10 @@
   /* Контент внутри модального окна */
   .modal-content {
     background-color: #fefefe;
-    margin: 20px 0px 20px 23px;
+    margin: 20px 0px 5px 5px;
    padding: 20px 10px 20px 10px;
    
-    width: 350px; /* Ширина модального окна */
+    width: 90%;
     max-width: 400px;
     height: 750px;
   
@@ -119,7 +119,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 5px;
+    top: 25px;
+    position: absolute;
     
   }
 .button_to_top{
@@ -209,7 +210,7 @@ right: 50px;
     height: 250px;
     position: absolute;
     top: -90px;
-    left: -76px;
+    left: -145px;
     
 
 }
@@ -219,7 +220,7 @@ right: 50px;
     height: 250px;
     position: absolute;
     top: -98px;
-    left: 164px;
+    left: 95px;
     
 
 }
@@ -385,7 +386,7 @@ border: 0;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 footer{
     width: 100%;
