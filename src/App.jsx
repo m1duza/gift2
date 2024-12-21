@@ -89,7 +89,7 @@ function App() {
         <div className="upper_block_text">
           <h1>С новым годом!</h1>
           <p className="upper_block_text_p">
-            Ты лучшее что произошло со мной в этом году!
+            <span className='Name'>Мария Николенко</span>, ты лучшее что произошло со мной в этом году!)
           </p>
         </div>
         <div className="main_poem_block">
