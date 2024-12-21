@@ -204,22 +204,22 @@ right: 50px;
 }
 
 .gif-class{
-    width: 100%;
+ 
     object-fit: contain; /* Изображение будет вписано в контейнер, сохраняя пропорции */
     height: 250px;
     position: absolute;
     top: -90px;
-    left: -95px;
+    left: -76px;
     
 
 }
 .gif-class2{
-    width: 100%;
+ 
     object-fit: contain; /* Изображение будет вписано в контейнер, сохраняя пропорции */
     height: 250px;
     position: absolute;
     top: -98px;
-    left: 145px;
+    left: 164px;
     
 
 }
@@ -364,7 +364,7 @@ border: 0;
         font-family: "Pacifico", cursive;
         text-align: start;
         font-weight: normal;
-        font-size: 25px;
+        font-size: 22px;
         gap: 15px
 }
 .wrapper_button{
@@ -385,6 +385,7 @@ border: 0;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin-left: 20px;
 }
 footer{
     width: 100%;
@@ -393,7 +394,7 @@ footer{
     -webkit-box-shadow: 0px -5px 37px 8px rgba(51, 51, 51, 0.46);
     -moz-box-shadow: 0px -5px 37px 8px rgba(51, 51, 51, 0.46);
     box-shadow: 0px -5px 37px 8px rgba(51, 51, 51, 0.46);
-    padding: 10px 10px 10px 20px
+
 }
 .button2{
 

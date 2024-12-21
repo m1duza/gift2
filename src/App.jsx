@@ -170,14 +170,9 @@ function App() {
       
         </div>
         <div
+        className='frame_place'
         ref={staticRef}
-        style={{
-          width: 100,
-          height: 100,
-          backgroundColor: 'blue',
-         
-      
-        }}
+       
       ></div>
         {/* Попап */}
         {isPopupVisible && (
