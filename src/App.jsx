@@ -8,10 +8,12 @@ import React, { useEffect, useRef, useState } from 'react';
 function App() {
   const draggableRef = useRef(null); // Ссылка на перемещаемый блок
   const staticRef = useRef(null); // Ссылка на неподвижный блок
+  const commonBlockRef = useRef(null); // Ссылка на общий блок
   const [isPopupVisible, setIsPopupVisible] = useState(false); // Состояние для показа попапа
   const popupRef = useRef(null); // Ссылка на попап для проверки кликов за его пределами
   const popupContentRef = useRef(null); // Ссылка на содержимое попапа
-
+ 
+  
   useEffect(() => {
     if (draggableRef.current) {
       gsap.registerPlugin(Draggable); // Регистрация плагина Draggable
@@ -19,18 +21,17 @@ function App() {
       // Создание Draggable
       Draggable.create(draggableRef.current, {
         type: 'x,y', // Перемещение по обеим осям
-        bounds: 'body', // Ограничение внутри body
-        onDrag: checkCollision, // Проверка пересечения при перетаскивании
+        bounds: commonBlockRef.current, // Ограничение внутри body
+        onDrag: checkCollisionOnStop, // Проверка пересечения при перетаскивании
       });
     }
   }, []);
 
   // Проверка пересечения двух блоков
-  const checkCollision = () => {
+  const checkCollisionOnStop = () => {
     const draggableBox = draggableRef.current.getBoundingClientRect();
     const staticBox = staticRef.current.getBoundingClientRect();
 
-    // Логика проверки пересечения
     const isOverlapping = !(
       draggableBox.right < staticBox.left ||
       draggableBox.left > staticBox.right ||
@@ -38,11 +39,16 @@ function App() {
       draggableBox.top > staticBox.bottom
     );
 
-    setIsPopupVisible(isOverlapping); // Показать попап, если пересекаются
+    if (isOverlapping) {
+      setIsPopupVisible(true); // Открываем попап только если блоки пересекаются при остановке
+    }
   };
+  
   const closePopup = () => {
     setIsPopupVisible(false);
+    document.body.style.overflow = ''; // Восстановление прокрутки
   };
+
    // Закрытие попапа при клике за его пределами
    const handleClickOutside = (event) => {
     if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -51,6 +57,8 @@ function App() {
   };
   useEffect(() => {
     if (isPopupVisible) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      document.body.style.overflow = 'hidden'; // Отключение прокрутки
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -66,8 +74,14 @@ function App() {
       popupContentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+
+  
+
+  
+  
   return (
-    <div>
+    <div className='common_block'  ref={commonBlockRef}>
       <header>
       <div>
         <img
@@ -86,6 +100,8 @@ function App() {
           src="https://cdn-icons-png.flaticon.com/512/16862/16862309.png"
           alt=""
         />
+        
+     
         <div className="upper_block_text">
           <h1>С новым годом!</h1>
           <p className="upper_block_text_p">
@@ -126,25 +142,58 @@ function App() {
             alt=""
             className="snow_flake4"
           />
+         
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/6262/6262054.png"
+            alt=""
+            className="snow_flake5"
+          />
           <div className="header_common_poem">
           <div className="title_poem">
-            <p>Не знав я ласки и заботы</p>
-            <p>Я познакомился с тобой</p>
-            <p>Ты словно яркий лучик солнца</p>
-            <p>Светишь мне над головой</p>
+            <p>Не знав я ласки и заботы,</p>
+            <p>Я познакомился с тобой.</p>
+            <p>Ты, словно яркий лучик солнца,</p>
+            <p>Светишь мне над головой.</p>
           </div>
           <div className="title_poem">
-            <p>Я чувствую тебя, ты рядом</p>
-            <p>Не видя в очи я тебя</p>
-            <p>Ты может маленькая мышка</p>
-            <p>Как призрак смотришь на меня</p>
+            <p>Я чувствую тебя, ты рядом,</p>
+            <p>Не видя в очи я тебя.</p>
+            <p>Ты, может, маленькая мышка,</p>
+            <p>Как призрак, смотришь на меня.</p>
           </div>
           <div className="title_poem">
-            <p>Твой голос только мне и внятен</p>
-            <p>Прекрасный, милый и живой</p>
-            <p>Сравнимый с божьим дорованьем</p>
-            <p>с улыбкой слушаю его</p>
+            <p>И только голос мне твой внятен</p>
+            <p>Прекрасный, милый и живой,</p>
+            <p>Сравнимый с Божьим дарованьем.</p>
+            <p>С улыбкой слушаю его.</p>
             </div>
+            <div className="title_poem">
+            <p>Но иногда во тьме я вижу</p>
+            <p>Сей проблеск ангельской красы</p>
+            <p>Его забыть мне невозможно,</p>
+            <p>Он не уходит с головы.</p>
+            </div>
+            <div className="title_poem">
+              <p>И всё во снах он мне мерещит</p>
+              <p>Сей лик всевышней красоты,</p>
+              <p>Предел мечтаний моей жизни.</p>
+              <p>Не позабыть его черты.</p>
+            </div>
+            
+            <div className="title_poem">
+              <p>Я подарю тебе весь мир,</p>
+              <p>Заботу, ласку и любовь.</p>
+              <p>Все краски этой яркой жизни</p>
+              <p>Украсят каждый день с тобой.</p>
+            </div>
+
+            <div className="title_poem">
+              <p>Спасибо, маленькой принцессе,</p>
+              <p>За то, что справилась со всем.</p>
+              <p>Не поломаю я надежды</p>
+              <p>И счастье я вручу тебе!</p>
+            </div>
+
           </div>
           </div>
         </div>
@@ -174,13 +223,14 @@ function App() {
         ref={staticRef}
        
       >&lt;3</div>
-        {/* Попап */}
+   
         {isPopupVisible && (
         <div className='footer_pop_up_main'  >
           <div className='modal-content' ref={popupContentRef}>
           <div onClick={closePopup} className='close_pop_up'>
           <span id="closeModal" className="close"> &times;</span>
           </div>
+          <div className="common_block_for_text">
             <p className="modal_text2">Тут я расскажу что думаю)</p>
             <p className="modal_text">Мой маленький мышонок), как бы это просто не звучало, но я кладу большую душу в эти слова, когда говорю тебе это), хоть я и говорю это тебе это очень часто, но я говорю это всегда искрине)</p>
             <p className="modal_text">Спасибо тебе за этот год), хоть я сейчас повторю слова которые были в начале твоего подарка, но ты правда сделала этот год самым лучшим в моей жизни!). Каждый созвон с тобой это все что я ждал каждую неделю.(по-ходу как я этого писал я чуть заплакал) каждый твой кружок радовал меня, каждое записанное голосовое сообщение, каждое сообщение от тебя). Не знаю почему, как это это вообще возможно, это даже у меня в голове не укладывается, но я люблю тебя, возможно это не слишком красиво написанное слово, но для меня оно не просто слово).</p>
@@ -192,7 +242,11 @@ function App() {
             <p className="modal_text">теперь я хочу поговорить о тебе), боже какая ты ахуенная, прости меня за это матное слово, но другое ни какое больше не подходит к описанию тебя). Твоя божественная фигура, при виде которой у меня уже стояк), хоть я до сих пор в афиге что я такое говорю , ведь как бы это не прилично, хотя как я буду тебя трахать потом, эти слова покажуться пушинкой). Если что я не говорю что я тебя буду трахать , так что бы тебе не дай бох стало плохо, а просто мне очень нравится твое тело), да и ты в обшем.Хоть мне вообще не нравится разделение тело и весь человек, но все же для тебя я могу такое говорить, ведь сложно представить что такое миленькое существо как ты, будет такое красивое)))). Зачем я это пишу), ну я дурак).</p>
             <p className="modal_text">Ну да мне жопа), я и правда не уместил все(, так что украсить  не получится(, а я бы это легко сделал(, прости(((. Надеюсь мы встретимся), пройдем через все трудности, хоть меня уже наверно неделю а то и гораздо больше, то что я же если не успею, ну когда ты дашь мне денег что бы я к тебе приехал, хоть я и сделаю все что бы такого не было, но если такое будет, то мне уже очень стыдно..... Я буду хоть камни Словакские есть), мне нечего от тебя не нужно, только твая забота ,и ты ). так ладно все( Люблю тебя), не плачь мышонок). хоть и мог милее написать, или в конце веселее, написав все лучшие моменты, но я думаю под шампусиком будущий Ваня тебе расскажет), там будет жопа). А и прости за орфографию, да, я Таджик). (пишу через минуту) боже как же это классно вот так писать)))))), на твой день рождение тебе огромнуууууюю посылку подарю)), там будет еще больше всего)). Целую</p>
 
-            <button className='button_to_top' onClick={goToTop}>to top</button>
+            </div>
+
+
+
+            <button className='button_to_top' onClick={goToTop}>верх</button>
           </div>
  
         </div>

@@ -1,9 +1,44 @@
 .header_common_poem{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
+.main_poem_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-family: "Caveat", serif;
+        text-align: start;
+        font-weight: 800;
+        font-size: 25px;
+        gap: 15px
+}
+.scroll_pop_up{
+    position: fixed;
 
+    transition: right 3s ease-in-out ;
+    top: 200px;
+    right: -150px ; 
+    width: 150px;
+    height: 50px;
+    background-color: white;
+    -webkit-box-shadow: -4px 4px 17px 0px rgba(51, 51, 51, 0.2);
+-moz-box-shadow: -4px 4px 17px 0px rgba(51, 51, 51, 0.2);
+box-shadow: -4px 4px 17px 0px rgba(51, 51, 51, 0.2);
+border-radius: 20px 0px 0px 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #333333;
+font-weight: 700;
+font-family: "Roboto", sans-serif;
+
+}
+.scroll_pop_up.show{
+right:0;
+
+}
 #id {
     width: 100px;
     height: 100px;
@@ -44,9 +79,17 @@
     width: 45px;
     height: 45px;
     position: absolute;
-    top: 700px;
-    left: 10px;
+    top: 850px;
+    right: 20px;
 }
+.snow_flake5{
+    position: absolute;
+    top: 1050px;
+    right: 45px;
+    width: 60px;
+    height: 60px;
+}
+
 .footer_place_img{
     width: 70px;
     height: 70px;
@@ -96,7 +139,7 @@
     width: 90%;
     max-width: 400px;
     height: 750px;
-  
+  border: 1px  #B8B8B8 solid;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
     -moz-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
@@ -105,13 +148,20 @@
   }
   .modal_text{
     font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    
   }
   .modal_text2{
     font-family: "Roboto", sans-serif;
     font-weight: 800;
     font-size: 20px;
   }
-  /* Кнопка закрытия */
+.common_block_for_text{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
   .close {
     color: #aaa;
     float: right;
@@ -195,10 +245,13 @@ right: 50px;
     height: 50px;
  
 }
-
+.common_block{
+    width: 100%;
+    height: 100%;
+}
 .footer_pop_up_main{
     width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
+    height: 101%; /* Полная высота */
 
     background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
     z-index: 1003; /* Поверх других элементов */
@@ -213,8 +266,8 @@ right: 50px;
     object-fit: contain; /* Изображение будет вписано в контейнер, сохраняя пропорции */
     height: 250px;
     position: absolute;
-    top: -90px;
-    left: -145px;
+    top: -90px; /* Задайте начальную позицию */
+    left: -147px;
     
 
 }
@@ -228,19 +281,132 @@ right: 50px;
     
 
 }
+@media all  and (min-width: 400px) {
+    .gif-class2 {
+        object-fit: contain;
+        height: 300px;
+        position: absolute;
+        top: -120px;
+        
+        left: 110px;
+    }
+    .gif-class {
+        object-fit: contain;
+        height: 300px;
+        position: absolute;
+        top: -110px;
+        left: -180px;
+    }
+    .snow_flake2 {
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        top: 250px;
+        left: 30px;
+    }
+    .frame_place {
+        width: 65px;
+        height: 65px;
+        border: #ffd60a 3px solid;
+        border-radius: 15px;
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffd60a;
+        margin-top: 20px;
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 20px 0px 5px 5px;
+        padding: 20px 10px 20px 10px;
+        width: 90%;
+        max-width: 400px;
+        height: 770px;
+        border: 1px #B8B8B8 solid;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
+        -moz-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
+        box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
+        overflow-y: auto;
+    }
+    .button_to_top {
+        text-decoration: none;
+        border: none;
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+        background-color: #ffd60a;
+        -webkit-box-shadow: -4px 4px 8px 2px rgba(51, 51, 51, 0.2);
+        -moz-box-shadow: -4px 4px 8px 2px rgba(51, 51, 51, 0.2);
+        box-shadow: -4px 4px 8px 2px rgba(51, 51, 51, 0.2);
+        position: absolute;
+        bottom: 25px;
+        right: 35px;
+        
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 25px;
+        position: absolute;
+        right: 30px;
+    }
+    #id {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: grab;
+    }
+    .main_poem_block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        font-family: "Caveat", serif;
+        text-align: start;
+        font-weight: 800;
+        font-size: 31px;
+        gap: 15px;
+    }
+    .snow_flake5 {
+        position: absolute;
+        top: 1150px;
+        right: 45px;
+        width: 60px;
+        height: 60px;
+    }
+    .snow_flake4 {
+        width: 45px;
+        height: 45px;
+        position: absolute;
+        top: 800px;
+        right: 20px;
+    }
+}
 .snow_png{
     width: 280px;
    height: 916px;
    object-fit: cover;
 }
-body {
-    margin: 0;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  
+body {
+    display: block;
+    margin: 0px;
 }
+
 h1 {
     display: block;
     font-size: 20px;
@@ -361,17 +527,7 @@ border: 0;
     width: 250px;
     
 }
-.main_poem_block{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-        font-family: "Pacifico", cursive;
-        text-align: start;
-        font-weight: normal;
-        font-size: 22px;
-        gap: 15px
-}
+
 .wrapper_button{
     display: flex;
     gap: 5px;
