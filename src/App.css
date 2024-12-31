@@ -3,6 +3,12 @@
     flex-direction: column;
     gap: 10px;
 }
+.modal_text3{
+    color: #333333;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+}
 .main_poem_block{
     display: flex;
     flex-direction: column;
@@ -153,14 +159,14 @@ right:0;
   /* Контент внутри модального окна */
   .modal-content {
     background-color: #fefefe;
-    margin: 20px 0px 5px 5px;
-   padding: 20px 10px 20px 10px;
+  
+
    
-    width: 90%;
-    max-width: 400px;
-    height: 750px;
+    width: 100%;
+
+    height: 100%;
   border: 1px  #B8B8B8 solid;
-    border-radius: 10px;
+   
     -webkit-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
     -moz-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
     box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
@@ -181,6 +187,7 @@ right:0;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin: 20px 5px 40px 5px;
 }
   .close {
     color: #aaa;
@@ -210,6 +217,8 @@ box-shadow: -4px 4px 8px 2px rgba(51, 51, 51, 0.2);
 position: absolute;
 bottom: 30px;
 right: 50px;
+font-weight: 500;
+font-family: "Roboto", sans-serif;
 }
   
   .close:hover,
@@ -271,7 +280,7 @@ right: 50px;
 }
 .footer_pop_up_main{
     width: 100%; /* Полная ширина */
-    height: 101%; /* Полная высота */
+    height: 100%; /* Полная высота */
 
     background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
     z-index: 1003; /* Поверх других элементов */
@@ -338,13 +347,13 @@ right: 50px;
     }
     .modal-content {
         background-color: #fefefe;
-        margin: 20px 0px 5px 5px;
-        padding: 20px 10px 20px 10px;
-        width: 90%;
-        max-width: 400px;
-        height: 770px;
+   
+
+        width: 100%;
+
+        height: 100%;
         border: 1px #B8B8B8 solid;
-        border-radius: 10px;
+ 
         -webkit-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
         -moz-box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
         box-shadow: 0px 0px 14px 8px rgba(52, 52, 52, 0.2);
@@ -361,7 +370,7 @@ right: 50px;
         -moz-box-shadow: -4px 4px 8px 2px rgba(51, 51, 51, 0.2);
         box-shadow: -4px 4px 8px 2px rgba(51, 51, 51, 0.2);
         position: absolute;
-        bottom: 25px;
+        bottom: 50px;
         right: 35px;
         
     }
